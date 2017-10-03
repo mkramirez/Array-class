@@ -62,26 +62,25 @@ T *Array<T>::end() {
 class Animal {
 public:
     virtual string speak() const = 0;
-}
+};
 
 class Cat : public Animal {
-public: 
+public:
     virtual string speak() const;
+};
+
+string Cat::speak() const {
+    return "meow";
 }
 
 class Dog : public Animal {
-public: 
+public:
     virtual string speak() const;
-}
-
-string Cat::speak() const {
-	return "meow";
-}
+};
 
 string Dog::speak() const {
-	return "bark";
+    return "bark";
 }
-
 
 int main(int argc, char * args[]) {
 	Array<Animal *> a(2);
