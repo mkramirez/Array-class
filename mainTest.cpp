@@ -84,8 +84,11 @@ T *Array<T>::end() {
 }
 
 int main(int argc, char * args[]) {
-	Cat c;
+	Array <int> a(3);
+	/*Cat c;
 	cout << c.speak() << endl;
 	Dog d;
 	cout << d.speak() << endl;
+	*/
+	cout << "All Tests Passed." << endl;
 }
