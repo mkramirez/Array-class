@@ -11,12 +11,12 @@ public:
 
 class Cat : public Animal {
 public: 
-        virtual string speak() const;
+    virtual string speak() const;
 };
 
 class Dog : public Animal {
 public: 
-        virtual string speak() const;
+	virtual string speak() const;
 };
 
 string Cat::speak() const {
