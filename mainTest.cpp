@@ -84,12 +84,7 @@ string Dog::speak() const {
 
 
 int main(int argc, char * args[]) {
-	//Array <int> a(3);
-	Array<Animal *> a(3);
-	cout << a[2]->speak();  // Prints "meow" or "bark".
-	/*Cat c;
-	cout << c.speak() << endl;
-	Dog d;
-	cout << d.speak() << endl;
-	*/
+	Array<Animal *> a(2);
+	cout << a[1]->speak();  // Prints "meow" or "bark".
+
 }
