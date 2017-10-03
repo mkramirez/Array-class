@@ -43,7 +43,7 @@ int Array<T>::size() const {
 
 template <class T>
 void Array<T>::fill(T k) {
-    for(T i = 0; i < len; i++){
+    for(int i = 0; i < len; i++){
         data[i] = k;
     }
 }
@@ -62,17 +62,17 @@ T *Array<T>::end() {
 class Animal {
 public:
     virtual string speak() const = 0;
-};
+}
 
 class Cat : public Animal {
 public: 
     virtual string speak() const;
-};
+}
 
 class Dog : public Animal {
 public: 
     virtual string speak() const;
-};
+}
 
 string Cat::speak() const {
 	return "meow";
@@ -85,6 +85,8 @@ string Dog::speak() const {
 
 int main(int argc, char * args[]) {
 	Array<Animal *> a(2);
-	cout << a[1]->speak();  // Prints "meow" or "bark".
-
+	a[0] = new Cat;
+	a[1] = new Dog;
+	cout << a[0]->speak() << endl; //Print Meow
+	cout << a[1]->speak() << endl; //Print Bark
 }
