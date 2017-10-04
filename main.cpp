@@ -6,45 +6,86 @@ using namespace std;
 
 template <class T>
 class Array {
-    T values [3]; //Number can be fixed to whatever you want.
-
 public:
-    Array(T first, string second, double third){
-        values[0] = first;
-        values[1] = second;
-        values[2] = third;
-    }
-};
+    Array(int size);
+    ~Array();
+    T & operator[](int i) const;
+    int size() const;
+    void fill(T k);
+    T * begin();
+    T * end();
 
-class testSpam {
-public:
-    testSpam(int * helper1, string * helper2, double * helper3);
-    ~testSpam();
-    //void fill(int j, string k, double l);
-    //int helper1();
-    //string helper2();
-    //double helper3();
-    /*int 아 = 1;
-    string 애 = "안녕";
-    double 야 = 0.2; */
 private:
-    int * spam1;
-    string * spam2;
-    double * spam3;
+    int len;
+    T * data;
 };
 
-testSpam::testSpam(int *helper1, string *helper2, double *helper3) {
-    spam1 = helper1;
-    spam2 = helper2;
-    spam3 = helper3;
+template <class T>
+Array<T>::Array(int size) {
+    len = size;
+    data = new T[len];
 }
 
-testSpam::~testSpam() {
-    delete [] spam1, spam2, spam3;
+template <class T>
+Array<T>::~Array(){
+    delete [] data;
 }
 
+template <class T>
+T &Array<T>::operator[](int i) const {
+    return data [i];
+}
+
+template <class T>
+int Array<T>::size() const {
+    return len;
+}
+
+template <class T>
+void Array<T>::fill(T k) {
+    for(int i = 0; i < len; i++){
+        data[i] = k;
+    }
+}
+
+template <class T>
+T *Array<T>::begin() {
+    return & data[0];
+}
+
+template <class T>
+T *Array<T>::end() {
+    return & data[len];
+}
+
+
+class Animal {
+public:
+    virtual string speak() const = 0;
+};
+
+class Cat : public Animal {
+public:
+    virtual string speak() const;
+};
+
+string Cat::speak() const {
+    return "meow";
+}
+
+class Dog : public Animal {
+public:
+    virtual string speak() const;
+};
+
+string Dog::speak() const {
+    return "bark";
+}
 
 int main(int argc, char * args[]) {
-
-
+	Array<Animal *> a(2);
+	a[0] = new Cat;
+	a[1] = new Dog;
+	cout << a[0]->speak() << endl; //Print Meow
+	cout << a[1]->speak() << endl; //Print Bark
 }
